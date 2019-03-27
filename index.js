@@ -9,7 +9,7 @@ var path = require('path');
 var video_time = 0;
 var daddy = io;
 var video = "Neon Demon.mp4";
-var videoDir = "../../media/micky/T-Rex/Micky/Videos/"
+var videoDir = "../../../media/micky/T-Rex/Micky/Videos/"
 
 var updateloop = new Interval(function(){
   socket.emit('count', Object.keys(io.sockets.connected).length);
@@ -167,4 +167,5 @@ io.on('connection', function(socket){
   http.listen(port, function(){
 		 console.log('listening on *:' + port);
      console.log('Current Dir: ' + __dirname)
+
 });
