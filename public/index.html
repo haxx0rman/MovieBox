@@ -1,0 +1,104 @@
+<head>
+	<link rel="icon" href="/favicon">
+	<title>MovieBox</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script> <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script> <script type="text/javascript" charset="utf-8"> $(document).ready(function() {
+    namespace='/chat';
+    var socket=io.connect('http://' + document.domain + ':' + location.port + namespace);
+    socket.on('connect', function() {
+        socket.emit('my event', {
+            data: 'I\'m connected!'
+        }
+        );
+    }
+    );
+    socket.on('video sync', function() {}
+    );
+}
+
+);
+</script> -->
+	<style>
+	video {
+		width: 100% !important;
+		height: auto !important;
+		border: 6px solid #101010;
+		border-radius: 10px;
+	}
+
+	.overflow {
+		overflow: auto
+	}
+
+	.left {
+		float: left
+	}
+
+	.right {
+		float: right
+	}
+
+	html,
+	body {
+		margin: 0px;
+		padding: 0px;
+		background: #222;
+		color: #ccc
+	}
+
+	#thing {
+		border: 1px solid #2d2d2d;
+		padding: 20px;
+		width: 90%;
+		height: 85%;
+		margin-top: 15px;
+		border-radius: 7px;
+	}
+
+	#thing2 {
+		border: 1px solid #2d2d2d;
+		height: 25%
+
+	}
+
+	a {
+		color: #82bf56;
+		text-decoration: none;
+	}
+
+	body {
+		font-family: arial
+	}
+
+	.extra {
+		display: inline-block;
+		line-height: 50px;
+		vertical-align: top;
+		margin-left: 30px;
+		font-size: 55px;
+		background: #111;
+		padding: 10px 30px;
+		height: 47px;
+		border-radius: 7px;
+		color: #333;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="cont overflow">
+		<div class="left" style="width:70%;margin:30px">
+			<video id="video" controls="true" autoplay width="100%" src="http://gay.pirho.site:2086/video" type="video/webm">
+				<source src="http://gay.pirho.site:2086/video" type="video/avi">
+				<source src="http://gay.pirho.site:2086/video" type="video/mp4">
+				<source src="http://gay.pirho.site:2086/video" type="video/mvk"> Your browser does not support the video tag. </video>
+			<div style="margin-top:30px">
+				<a href="https://discord.gg/9rVf6hs" target="_blank"> <img src="http://ownageowls.com/Themes/LikeIPBTheme/images/theme/discord.png" height="68" width="68" /> </a>
+				<iframe width="99%" height="20%" src="http://gay.pirho.site:2086/videos" id="thing2"></iframe>
+			</div>
+		</div>
+		<div class="left" style="width:23%;padding-top:15px">
+			<iframe width="99%" height="99%" src="http://gay.pirho.site:2086/chat" id="thing"></iframe>
+		</div>
+	</div>
+</body>

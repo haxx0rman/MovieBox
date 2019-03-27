@@ -1,0 +1,30 @@
+</form>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script>
+  var buttonClickedId = "none";
+  function whichButton(buttonElement){
+    buttonClickedId = buttonElement.id;
+  }
+    $(document).ready(function() {
+
+        $(function() {
+            $('form').submit(function() {
+            var url = "http://gay.pirho.site:2086/setvideo/" + buttonClickedId;
+
+
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+              callback(xmlHttp.responseText);
+              }
+              xmlHttp.open("GET", url, true); // true for asynchronous 
+              xmlHttp.send(null);
+            });
+
+        });
+    })
+</script>
+</body>
+
+</html>

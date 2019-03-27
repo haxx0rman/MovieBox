@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>#movies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        body::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgb(0, 0, 0);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #526a7d;
+            /* outline: 1px solid slategrey; */
+            border-radius: 5px;
+            width: 3px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 13px Helvetica, Arial;
+            color: #ccc;
+        }
+
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 60%;
+        }
+
+        #username {
+            border: 0;
+            padding: 10px;
+            width: 20%;
+            border-right: 1px solid #ccc;
+            background-color: transparent;
+            border-right: 0px;
+            color: #fff;
+        }
+
+        #daddy {
+            border: 0;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            border-right: 1px solid #ccc;
+            background-color: transparent;
+            border-right: 0px;
+            color: #fff;
+        }
+
+        #restart {
+            border: 0;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            border-right: 1px solid #ccc;
+            background-color: transparent;
+            border-right: 0px;
+            color: #fff;
+        }
+
+        form button {
+            width: 16%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li b {
+            color: #444;
+        }
+
+        #messages li {
+            padding: 5px 10px;
+            background: #191818;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        #messages li:nth-child(odd) {
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        #messages {
+            margin-bottom: 80px;
+            padding: 10px;
+        }
+
+        #count {
+            color: #95cc16;
+            ;
+        }
+
+        #m {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            color: #fff;
+        }
+
+        .red {
+            color: #f74a4a;
+        }
+    </style>
+</head>
+
+<body>
+    <span style="position: fixed; top: 0px;right: 10px; font-size: 10px; color: #a7a7a7; background: #111; padding: 5px; border-radius: 5px;"><span  id="count" >0</span> Watching <span class="red"> &nbsp; <i class="fa fa-dot-circle-o faa-burst animated" aria-hidden="true"></i> &nbsp; LIVE</span></span>
+    <div><b>Chat:</b> </div>
+    <ul id="messages"></ul>
+    <form action="">
+        <input id="username" placeholder="username " autocomplete="off" />
+        <input placeholder="message" id="m" autocomplete="off" />
+        <button id="send" onclick="whichButton(this)">Send</button>
+        <button id="daddy" onclick="whichButton(this)">TAKE REMOTE</button>
+        <!--<button id="restart" onclick="whichButton(this)">GO TO BEGINNING</button> -->
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script>
+      var buttonClickedId = "none";
+      function whichButton(buttonElement){
+        buttonClickedId = buttonElement.id;
+      }
+        $(document).ready(function() {
+
+            $(function() {
+                var socket = io();
+                var startTime;
+
+                /*
+                setInterval(function() {
+                  startTime = Date.now();
+                  socket.emit('ping');
+                }, 2000);
+
+                socket.on('pong', function() {
+                  latency = Date.now() - startTime;
+                  console.log(latency);
+                });
+                */
+                $('form').submit(function() {
+                  if( buttonClickedId === 'send' ) {
+                    var thing = {
+                        "msg": $('#m').val(),
+                        "username": $("#username").val()
+                    }
+                    if ($("#m").val() == '') {
+
+                        alert("Enter a message")
+
+                    } else {
+                        socket.emit('chat message', thing);
+                    }
+                    $('#m').val('');
+                    return false;
+                  } else {
+                    var thing = {
+                        "username": $("#username").val(),
+                        "daddy" : true
+                    }
+
+                    if ($("#m").val() != '') {
+
+                        alert("Enter a message")
+
+                    } else {
+                        socket.emit('im daddy', thing);
+                    }
+                    $('#m').val('');
+                    return false;
+                  }
+                });
+
+                socket.on('count', function(data) {
+                    $("#count").text(data);
+                });
+
+
+
+                socket.on('gimme time', function(data) {
+                  time = parent.document.getElementById("video").currentTime;
+                  socket.emit('video sync', time);
+                });
+
+                socket.on('video time', function(time) {
+                  current_time = parent.document.getElementById("video").currentTime;
+                  if (current_time > time - 2.5 && current_time < time + 2.5) {
+                    console.log("in sync");
+                  } else {
+                    console.log("not in sync");
+                    parent.document.getElementById("video").currentTime = time;
+                  }
+                });
+
+                socket.on('count', function(data) {
+                    $("#count").text(data);
+                });
+
+                socket.on('chat message', function(json) {
+
+                  //  parent.document.getElementById("video").currentTime = 9;
+
+                    if (parent.document.getElementById("video").currentTime < json.time){
+                    parent.document.getElementById("video").currentTime = json.time;
+                    }
+
+                    $('#messages').append($('<li>').html(json.msg));
+                    window.scrollTo(0, document.body.scrollHeight);
+
+                });
+            });
+        })
+    </script>
+</body>
+
+</html>

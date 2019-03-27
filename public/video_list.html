@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>#movies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    body {
+  font: normal 100%/1.5 Verdana, sans-serif;
+  color: #FAFAFA;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+
+a {
+color:#7CBDBA;
+text-decoration: none;
+}
+
+.button {
+display: inline-block;
+line-height: 3em;
+padding: 0 1em;
+background: #34343E;
+border-radius: 0.125em;
+background-clip: padding-box;
+color: grey;
+border: 1px solid #2d2d2d;
+
+margin-bottom: 4px;
+}
+
+.button--plain {
+background: #41414E
+}
+
+.button--ghost {
+border: 1px solid #2d2d2d !important;
+background: none
+}
+
+.button--ghost--green {
+border-color: #7CBDBA !important
+}
+
+.button--lighten {
+box-shadow: 0 1px 1px #33333D;
+background-image: linear-gradient(to bottom, #464653, #3E3E49);
+}
+
+.button--subtle {
+background-image: linear-gradient(to bottom, #41414D, #3B3B47);
+box-shadow: 0 1px 1px #33333D;
+}
+
+.button--realistic {
+box-shadow: 0 1px 1px #33333D;
+background-image: linear-gradient(to bottom, #40404B, #373744 );
+}
+
+.button--indent {
+background: #363642;
+box-shadow: inset 0 1px 1px #33333D, inset 0 -1px 0 #404049;
+}
+
+.button--slicein {
+background: none;
+background-image: linear-gradient(to right, #363642, #3B3B47);
+box-shadow: inset 1px 0 1px #33333D;
+}
+    </style>
+</head>
+
+<body>
+    <ul id="messages"></ul>
+    <form action="">
+
+<button class="button button--ghost" id="A Beautiful Mind (2001).mp4" onclick="whichButton(this)">A Beautiful Mind (2001)</button>
+<button class="button button--ghost" id="A Fantastic Fear of Everything.mp4" onclick="whichButton(this)">A Fantastic Fear of Everything</button>
+<button class="button button--ghost" id="American Psycho (2000).mp4" onclick="whichButton(this)">American Psycho (2000)</button>
+<button class="button button--ghost" id="Annihilation (2018).mkv" onclick="whichButton(this)">Annihilation (2018)</button>
+<button class="button button--ghost" id="Ant Man (2015).mp4" onclick="whichButton(this)">Ant Man (2015)</button>
+<button class="button button--ghost" id="Ant-Man and the Wasp (2018).mp4" onclick="whichButton(this)">Ant-Man and the Wasp (2018)</button>
+<button class="button button--ghost" id="Arrival (2016).mkv" onclick="whichButton(this)">Arrival (2016)</button>
+<button class="button button--ghost" id="Avengers Infinity War.mp4" onclick="whichButton(this)">Avengers Infinity War</button>
+<button class="button button--ghost" id="Bill & Ted's Bogus Journey.mp4" onclick="whichButton(this)">Bill & Ted's Bogus Journey</button>
+<button class="button button--ghost" id="Bill And Ted's Excellent Adventure.mp4" onclick="whichButton(this)">Bill And Ted's Excellent Adventure</button>
+<button class="button button--ghost" id="Black Panther (2018).mp4" onclick="whichButton(this)">Black Panther (2018)</button>
+<button class="button button--ghost" id="Black Snake Moan.mp4" onclick="whichButton(this)">Black Snake Moan</button>
+<button class="button button--ghost" id="Dawn of the Planet of the Apes (2014).mp4" onclick="whichButton(this)">Dawn of the Planet of the Apes (2014)</button>
+<button class="button button--ghost" id="Doctor Strange (2016).mp4" onclick="whichButton(this)">Doctor Strange (2016)</button>
+<button class="button button--ghost" id="Donnie Darko (2001).mp4" onclick="whichButton(this)">Donnie Darko (2001)</button>
+<button class="button button--ghost" id="Ex Machina.mp4" onclick="whichButton(this)">Ex Machina</button>
+<button class="button button--ghost" id="Exam (2009).mp4" onclick="whichButton(this)">Exam (2009)</button>
+<button class="button button--ghost" id="Four Rooms.mp4" onclick="whichButton(this)">Four Rooms</button>
+<button class="button button--ghost" id="Get Out (2017).mkv" onclick="whichButton(this)">Get Out (2017)</button>
+<button class="button button--ghost" id="Gone Baby Gone (2007).mp4" onclick="whichButton(this)">Gone Baby Gone (2007)</button>
+<button class="button button--ghost" id="Hard Candy.mp4" onclick="whichButton(this)">Hard Candy</button>
+<button class="button button--ghost" id="Hardcore Henry.mkv" onclick="whichButton(this)">Hardcore Henry</button>
+<button class="button button--ghost" id="Hot Fuzz.mp4" onclick="whichButton(this)">Hot Fuzz</button>
+<button class="button button--ghost" id="Ice Age.mp4" onclick="whichButton(this)">Ice Age</button>
+<button class="button button--ghost" id="Isle of Dogs (2018).mp4" onclick="whichButton(this)">Isle of Dogs (2018)</button>
+<button class="button button--ghost" id="Kill Bill 2.mp4" onclick="whichButton(this)">Kill Bill 2</button>
+<button class="button button--ghost" id="Kill Bill Vol.1.mp4" onclick="whichButton(this)">Kill Bill Vol.1</button>
+<button class="button button--ghost" id="Leon The Professional.mkv" onclick="whichButton(this)">Leon The Professional</button>
+<button class="button button--ghost" id="Lolita.mp4" onclick="whichButton(this)">Lolita</button>
+<button class="button button--ghost" id="Moonrise Kingdom.mp4" onclick="whichButton(this)">Moonrise Kingdom</button>
+<button class="button button--ghost" id="Mystic River (2003).mp4" onclick="whichButton(this)">Mystic River (2003)</button>
+<button class="button button--ghost" id="Neon Demon.mp4" onclick="whichButton(this)">Neon Demon</button>
+<button class="button button--ghost" id="No Country For Old Men (2007).mp4" onclick="whichButton(this)">No Country For Old Men (2007)</button>
+<button class="button button--ghost" id="No Country For Old Men.mp4" onclick="whichButton(this)">No Country For Old Men</button>
+<button class="button button--ghost" id="Nocturnal Animals (2016).mkv" onclick="whichButton(this)">Nocturnal Animals (2016)</button>
+<button class="button button--ghost" id="Only God Forgives.mp4" onclick="whichButton(this)">Only God Forgives</button>
+<button class="button button--ghost" id="Primal Fear.mkv" onclick="whichButton(this)">Primal Fear</button>
+<button class="button button--ghost" id="Prodigy (2017).mp4" onclick="whichButton(this)">Prodigy (2017)</button>
+<button class="button button--ghost" id="Pulp Fiction.mp4" onclick="whichButton(this)">Pulp Fiction</button>
+<button class="button button--ghost" id="Ready Player One (2018).mp4" onclick="whichButton(this)">Ready Player One (2018)</button>
+<button class="button button--ghost" id="Requiem for a Dream (2000).mp4" onclick="whichButton(this)">Requiem for a Dream (2000)</button>
+<button class="button button--ghost" id="Reservoir Dogs.mp4" onclick="whichButton(this)">Reservoir Dogs</button>
+<button class="button button--ghost" id="Rise of the Planet of the Apes (2011).mp4" onclick="whichButton(this)">Rise of the Planet of the Apes (2011)</button>
+<button class="button button--ghost" id="Savages.mp4" onclick="whichButton(this)">Savages</button>
+<button class="button button--ghost" id="Saw (2004).mp4" onclick="whichButton(this)">Saw (2004)</button>
+<button class="button button--ghost" id="Se7en.mkv" onclick="whichButton(this)">Se7en</button>
+<button class="button button--ghost" id="Secondhand Lion.mp4" onclick="whichButton(this)">Secondhand Lion</button>
+<button class="button button--ghost" id="Seven Psychopath.mp4" onclick="whichButton(this)">Seven Psychopath</button>
+<button class="button button--ghost" id="Shawshank Redemption.mp4" onclick="whichButton(this)">Shawshank Redemption</button>
+<button class="button button--ghost" id="Shrek.mp4" onclick="whichButton(this)">Shrek</button>
+<button class="button button--ghost" id="Shutter Island.mkv" onclick="whichButton(this)">Shutter Island</button>
+<button class="button button--ghost" id="Sin City A Dame to Kill For.mp4" onclick="whichButton(this)">Sin City A Dame to Kill For</button>
+<button class="button button--ghost" id="Sin City Extended.mp4" onclick="whichButton(this)">Sin City Extended</button>
+<button class="button button--ghost" id="Spider Man - Homecoming (2017).mkv" onclick="whichButton(this)">Spider Man - Homecoming (2017)</button>
+<button class="button button--ghost" id="Swiss Army Man.mkv" onclick="whichButton(this)">Swiss Army Man</button>
+<button class="button button--ghost" id="The Babadook.mp4" onclick="whichButton(this)">The Babadook</button>
+<button class="button button--ghost" id="The Departed (2006).mp4" onclick="whichButton(this)">The Departed (2006)</button>
+<button class="button button--ghost" id="The Grand Budapest Hotel.mp4" onclick="whichButton(this)">The Grand Budapest Hotel</button>
+<button class="button button--ghost" id="The Number 23 (2007).mkv" onclick="whichButton(this)">The Number 23 (2007)</button>
+<button class="button button--ghost" id="The Prestige (2006).mkv" onclick="whichButton(this)">The Prestige (2006)</button>
+<button class="button button--ghost" id="The Princess Bride.mkv" onclick="whichButton(this)">The Princess Bride</button>
+<button class="button button--ghost" id="The Ring.mkv" onclick="whichButton(this)">The Ring</button>
+<button class="button button--ghost" id="The Shining.mp4" onclick="whichButton(this)">The Shining</button>
+<button class="button button--ghost" id="The Truman Show.mp4" onclick="whichButton(this)">The Truman Show</button>
+<button class="button button--ghost" id="The Usual Suspects (1995).mkv" onclick="whichButton(this)">The Usual Suspects (1995)</button>
+<button class="button button--ghost" id="The Worlds End.mkv" onclick="whichButton(this)">The Worlds End</button>
+<button class="button button--ghost" id="Thor - Ragnarok (2017).mkv" onclick="whichButton(this)">Thor - Ragnarok (2017)</button>
+<button class="button button--ghost" id="Upgrade (2018).mp4" onclick="whichButton(this)">Upgrade (2018)</button>
+<button class="button button--ghost" id="Venom (2018).mp4" onclick="whichButton(this)">Venom (2018)</button>
+<button class="button button--ghost" id="Vile.mp4" onclick="whichButton(this)">Vile</button>
+<button class="button button--ghost" id="War for the Planet of the Apes (2017).mp4" onclick="whichButton(this)">War for the Planet of the Apes (2017)</button>
+<button class="button button--ghost" id="What Happened To Monday (2017).mkv" onclick="whichButton(this)">What Happened To Monday (2017)</button>
+<button class="button button--ghost" id="Wind.River.2017.720p.BluRay.x264-[YTS.AG].mp4" onclick="whichButton(this)">Wind.River.2017.720p.BluRay.x264-[YTS.AG]</button>
+<button class="button button--ghost" id="Zodiac (2007).mkv" onclick="whichButton(this)">Zodiac (2007)</button>
+<button class="button button--ghost" id="misc" onclick="whichButton(this)"></button>
+<button class="button button--ghost" id="shows (doesnt work yet)1234" onclick="whichButton(this)">shows (doesnt work yet)</button></form>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script>
+  var buttonClickedId = "none";
+  function whichButton(buttonElement){
+    buttonClickedId = buttonElement.id;
+  }
+    $(document).ready(function() {
+
+        $(function() {
+            $('form').submit(function() {
+            var url = "http://gay.pirho.site:2086/setvideo/" + buttonClickedId;
+
+
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+              callback(xmlHttp.responseText);
+              }
+              xmlHttp.open("GET", url, true); // true for asynchronous 
+              xmlHttp.send(null);
+            });
+
+        });
+    })
+</script>
+</body>
+
+</html>
