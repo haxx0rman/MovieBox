@@ -10,6 +10,12 @@ var daddy = io;
 var video = "Neon Demon.mp4";
 var videoDir = "/media/micky/T-Rex/Micky/Videos/"
 
+var updateloop = new Interval(function(){
+  socket.emit('count', Object.keys(io.sockets.connected).length);
+  daddy.emit('gimme time');
+  daddy.broadcast.emit('video time', video_time);
+ }, 3000);
+
 // set facivon
 //app.use(app.favicon(__dirname + '/public/images/favicon.png'));
 
@@ -57,6 +63,21 @@ app.get('/setVideo/:id', function(req, res){
   res.sendFile(videoDir + video);
 });
 
+function Interval(fn, time) {
+    var timer = false;
+    this.start = function () {
+        if (!this.isRunning())
+            timer = setInterval(fn, time);
+    };
+    this.stop = function () {
+        clearInterval(timer);
+        timer = false;
+    };
+    this.isRunning = function () {
+        return timer !== false;
+    };
+}
+
 function sanitize (body) {
        return body
          .replace(/</g, "&lt;")
@@ -80,11 +101,13 @@ io.on('connection', function(socket){
 
 
 // refresh how many are watching every 3000 ms
-	setInterval(function(){
-	    socket.emit('count', Object.keys(io.sockets.connected).length);
-      daddy.emit('gimme time');
-      daddy.broadcast.emit('video time', video_time);
-	}, 3000);
+
+  if (updateloop.isRunning()){
+    console.log("pingloop already running")
+  } else {
+    console.log("start pingloop")
+    pingloop.start()
+  }
 
 // if a chat is received, push it to everyone
 
