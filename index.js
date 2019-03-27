@@ -3,12 +3,13 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 80
+var path = require('path');
 
 
 var video_time = 0;
 var daddy = io;
 var video = "Neon Demon.mp4";
-var videoDir = "/media/micky/T-Rex/Micky/Videos/"
+var videoDir = path.basename("/media/micky/T-Rex/Micky/Videos/");
 
 var updateloop = new Interval(function(){
   socket.emit('count', Object.keys(io.sockets.connected).length);
