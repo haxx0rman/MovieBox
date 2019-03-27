@@ -2,7 +2,7 @@ var fs = require('fs'), request = require('request');
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var port = 80;
+var port = process.env.PORT || 80
 
 
 var video_time = 0;
