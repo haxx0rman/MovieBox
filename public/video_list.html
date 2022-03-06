@@ -164,7 +164,7 @@ box-shadow: inset 1px 0 1px #33333D;
 
         $(function() {
             $('form').submit(function() {
-            var url = "http://gay.pirho.site:2086/setvideo/" + buttonClickedId;
+            var url = "http://VIDEO.HOST/setvideo/" + buttonClickedId;
 
 
             var xmlHttp = new XMLHttpRequest();
@@ -172,7 +172,7 @@ box-shadow: inset 1px 0 1px #33333D;
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
               callback(xmlHttp.responseText);
               }
-              xmlHttp.open("GET", url, true); // true for asynchronous 
+              xmlHttp.open("GET", url, true); // true for asynchronous
               xmlHttp.send(null);
             });
 

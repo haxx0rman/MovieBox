@@ -1,3 +1,4 @@
+// one of my first (if not my first ever) node project
 var fs = require('fs'), request = require('request');
 var app = require('express')();
 var http = require('http').Server(app);
@@ -8,19 +9,15 @@ var path = require('path');
 
 var video_time = 0;
 var daddy = io;
-var video = "Neon Demon.mp4";
-var videoDir = "../../../media/micky/T-Rex/Micky/Videos/"
+var video = "Neon Demon.mp4"; //default video.
+var videoDir = "../../../media/micky/T-Rex/Micky/Videos/" // movie directory on old server
 
-var updateloop = new Interval(function(){
+var updateloop = new Interval(function(){ // update event to keep video players in sync
   socket.emit('count', Object.keys(io.sockets.connected).length);
   daddy.emit('gimme time');
   daddy.broadcast.emit('video time', video_time);
  }, 3000);
 
-// set facivon
-//app.use(app.favicon(__dirname + '/public/images/favicon.png'));
-
-// chat template
 app.get('/', function(req, res){
 
   res.sendFile(__dirname + '/public/index.html');
@@ -38,7 +35,7 @@ app.get('/video', function(req, res){
   res.sendFile(videoDir + video);
 });
 
-app.get('/videos', function(req, res){
+app.get('/videos', function(req, res){ //TODO: generates the html with the video list. Very inefficient. rewrite it to use standard html gen techniques
   fs.readFile(__dirname + "/public/video_listp1.txt", "utf8", function(err, p1) {
     fs.readFile(__dirname + "/public/video_listp2.txt", "utf8", function(err, p2) {
       var packet = "";
@@ -93,11 +90,10 @@ io.on('connection', function(socket){
   var big_gays = Object.keys(io.sockets.connected).length;
   if (big_gays < 2 ) {
     daddy = socket;
-    io.emit('chat message',  { 'msg' : "<b>You are now daddy</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
+    io.emit('chat message',  { 'msg' : "<b>You now have the remote</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
   }
 
-  socket.broadcast.emit('chat message',  { 'msg' : "<b> a nigga joined :0!</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
-  //console.log(socket.username + " connected");
+  socket.broadcast.emit('chat message',  { 'msg' : "<b> someone joined :0!</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
 
 
 
@@ -113,7 +109,6 @@ io.on('connection', function(socket){
 // if a chat is received, push it to everyone
 
 	  socket.on('chat message', function(msg){
-	  	//console.log(msg);
 	  	var username;
 	  	if(msg.username === ""){
 	  		username = "Guest";
@@ -124,7 +119,7 @@ io.on('connection', function(socket){
 	  });
 
 
-    socket.on('im daddy', function(msg){
+    socket.on('im daddy', function(msg){ // event to become video party host
 	  	daddy = socket;
 
       video_time = msg.time;
@@ -135,7 +130,7 @@ io.on('connection', function(socket){
 	  	} else {
 	  		username = msg.username;
 	  	}
-      io.emit('chat message',  { 'msg' : "<b>" + username + " is now daddy</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
+      io.emit('chat message',  { 'msg' : "<b>" + username + " now has the remote</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
 	  });
 
     socket.on('video sync', function(data){
@@ -155,7 +150,7 @@ io.on('connection', function(socket){
     if (big_gays < 1 ) {
       video_time = 0
     }
-      socket.broadcast.emit('chat message',  { 'msg' : "<b> a nigga left :'0!</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
+      socket.broadcast.emit('chat message',  { 'msg' : "<b> someone left left :'0!</b> ", 'count': Object.keys(io.sockets.connected).length, 'time' : video_time });
       //console.log(socket.username + " disconnected");
     });
 });
